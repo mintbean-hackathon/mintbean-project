@@ -76,7 +76,7 @@ export class UpdateUser extends React.Component {
                 />
               </div>
 
-              <div className="formGroup">
+              {/* <div className="formGroup">
                 <label className="formLabel">Address</label>
                 <input
                   className="formControl"
@@ -84,7 +84,7 @@ export class UpdateUser extends React.Component {
                   name="address"
                   onChange={this.handleChange}
                 />
-              </div>
+              </div> */}
 
               <div className="formGroup">
                 <label className="formLabel">Email</label>
