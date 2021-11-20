@@ -46,14 +46,6 @@ const User = db.define('user', {
       notEmpty: true
     }
   }
-  // address: {
-  //   type: Sequelize.STRING,
-  //   defaultValue: 'Add Address',
-  //   allowNull: false,
-  //   validate: {
-  //     notEmpty: true
-  //   }
-  // },
 })
 
 module.exports = User
