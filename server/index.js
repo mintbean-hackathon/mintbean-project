@@ -63,12 +63,12 @@ const createApp = () => {
   app.use(passport.initialize())
   app.use(passport.session())
 
+  // static file-serving middleware
+  app.use(express.static(path.join(__dirname, '..', 'public')))
+
   // auth and api routes
   app.use('/auth', require('./auth'))
   app.use('/api', require('./api'))
-
-  // static file-serving middleware
-  app.use(express.static(path.join(__dirname, '..', 'public')))
 
   // any remaining requests with an extension (.js, .css, etc.) send 404
   app.use((req, res, next) => {
@@ -108,14 +108,10 @@ const startListening = () => {
 const syncDb = () => db.sync()
 
 async function bootApp() {
-  try {
-    await sessionStore.sync()
-    await syncDb()
-    await createApp()
-    await startListening()
-  } catch (err) {
-    console.log(err)
-  }
+  await sessionStore.sync()
+  await syncDb()
+  await createApp()
+  await startListening()
 }
 // This evaluates as true when this file is run directly from the command line,
 // i.e. when we say 'node server/index.js' (or 'nodemon server/index.js', or 'nodemon server', etc)
