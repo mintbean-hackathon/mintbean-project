@@ -6,8 +6,7 @@ import {connect} from 'react-redux'
  * COMPONENT
  */
 export const FundrawityHomepage = props => {
-  const {email} = props
-
+  console.log('newpropsl==>', props)
   return (
     <div>
       <h3>This is the fun land </h3>
