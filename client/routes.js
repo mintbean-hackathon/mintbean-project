@@ -2,9 +2,9 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup, UserHome, FundrawityHomepage} from './components'
+import {Login, Signup, UserHome} from './components'
 import {me} from './store'
-
+import FundrawityHomepage from './components/FundrawityHomepage'
 import updateUser from './components/updateUser'
 
 /**
