@@ -1,20 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import FundrawityHomepage from './'
-import {Route, Link} from 'react-router-dom'
 
 /**
  * COMPONENT
  */
-export const UserHome = props => {
+export const FundrawityHomepage = props => {
   const {email} = props
-  console.log('this is props==>', props)
 
   return (
     <div>
-      <h3>Welcome, {email}</h3>
-      <Route component={FundrawityHomepage} />
+      <h3>This is the fun land </h3>
     </div>
   )
 }
@@ -28,11 +24,11 @@ const mapState = state => {
   }
 }
 
-export default connect(mapState)(UserHome)
+export default connect(mapState)(FundrawityHomepage)
 
 /**
  * PROP TYPES
  */
-UserHome.propTypes = {
+FundrawityHomepage.propTypes = {
   email: PropTypes.string
 }
