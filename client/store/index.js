@@ -10,7 +10,7 @@ import singleDrawingReducer from './singleDrawing'
 const reducer = combineReducers({
   user: user,
   users: usersReducer,
-  drawing: singleDrawingReducer,
+  singleDrawingReducer,
   drawings: drawingsReducer
 })
 const middleware = composeWithDevTools(

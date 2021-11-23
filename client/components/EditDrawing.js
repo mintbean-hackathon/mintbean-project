@@ -9,8 +9,8 @@ const defaultState = {
 }
 
 class EditDrawing extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = defaultState
 
     this.handleChange = this.handleChange.bind(this)
@@ -54,6 +54,8 @@ class EditDrawing extends React.Component {
 
   render() {
     const {name, description} = this.state
+    console.log('state of EditDrawing===>', this.state)
+    console.log('props of EditDrawing===>', this.props)
     return (
       <div className="form">
         <form id="add-drawing-form" onSubmit={this.handleSubmit}>
