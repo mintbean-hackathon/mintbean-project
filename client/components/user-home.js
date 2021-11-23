@@ -32,7 +32,7 @@ export class UserHome extends React.Component {
 
                 <div>
                   <Link to={`/drawings/${drawing.id}/edit`}>
-                    <button type="button">Edit Product</button>
+                    <button type="button">Edit Drawing</button>
                   </Link>
 
                   <button
