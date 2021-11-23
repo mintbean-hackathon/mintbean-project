@@ -6,6 +6,7 @@ import {Login, Signup, UserHome} from './components'
 import {me} from './store'
 import FundrawityHomepage from './components/FundrawityHomepage'
 import updateUser from './components/updateUser'
+import AddDrawing from './components/AddDrawing'
 
 /**
  * COMPONENT
@@ -28,7 +29,8 @@ class Routes extends Component {
             <Switch>
               {/* Routes placed here are only available after logging in */}
               <Route path="/home" component={UserHome} />
-              <Route exact path="/updateProfile" component={updateUser} />
+              <Route exact path="/updateprofile" component={updateUser} />
+              <Route exact path="/adddrawing" component={AddDrawing} />
             </Switch>
           )}
           {/* Displays our Login component as a fallback */}

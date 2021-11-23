@@ -33,11 +33,11 @@ export const CreateDrawing = drawing => {
   }
 }
 
-// thunk for CREATE_PRODUCT
+// thunk for CREATE_DRAWING
 export const createNewDrawing = drawing => {
   return async dispatch => {
     try {
-      const response = await axios.post('/api/products', drawing)
+      const response = await axios.post('/api/drawings', drawing)
       const newDrawing = response.data
       dispatch(createNewDrawing(newDrawing))
     } catch (error) {
@@ -54,7 +54,7 @@ export const deleteDrawing = drawing => {
   }
 }
 
-//thunk for DELETE_PRODUCT
+//thunk for DELETE_DRAWING
 export const deleteDrawingThunk = drawing => {
   return async dispatch => {
     try {

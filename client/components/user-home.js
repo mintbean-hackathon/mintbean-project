@@ -2,7 +2,6 @@ import React from 'react'
 import {FetchDrawings, deleteDrawingThunk} from '../store/drawings'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-// import AddProductForm from './AddProductForm'
 
 /**
  * COMPONENT-This is for
@@ -18,7 +17,6 @@ export class UserHome extends React.Component {
     const drawings = this.props.drawings
     return (
       <div>
-        {/* <AddProductForm /> */}
         <h1>All Drawings</h1>
         <h2>List of Drawing:</h2>
         {drawings.map(drawing => {
@@ -66,5 +64,3 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserHome)
-
-// export default UserHome
