@@ -33,8 +33,6 @@ class AddDrawing extends React.Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <h1>New Drawing Details</h1>
-
           <label htmlFor="name">Drawing Name</label>
           <input
             type="text"
@@ -53,7 +51,7 @@ class AddDrawing extends React.Component {
             onChange={this.handleChange}
           />
 
-          <button type="submit">Add Drawing</button>
+          <button type="submit">Save Drawing</button>
         </form>
       </div>
     )

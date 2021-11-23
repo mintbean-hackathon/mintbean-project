@@ -7,6 +7,7 @@ import {me} from './store'
 import FundrawityHomepage from './components/FundrawityHomepage'
 import updateUser from './components/updateUser'
 import AddDrawing from './components/AddDrawing'
+import EditDrawing from './components/EditDrawing'
 
 /**
  * COMPONENT
@@ -31,6 +32,11 @@ class Routes extends Component {
               <Route path="/home" component={UserHome} />
               <Route exact path="/updateprofile" component={updateUser} />
               <Route exact path="/adddrawing" component={AddDrawing} />
+              <Route
+                exact
+                path="/drawings/drawingId/edit"
+                component={EditDrawing}
+              />
             </Switch>
           )}
           {/* Displays our Login component as a fallback */}
