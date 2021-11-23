@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 
 /**
- * COMPONENT
+ * COMPONENT- This is where the LandingPage Willbe
  */
 export const FundrawityHomepage = props => {
   console.log('newpropsl==>', props)
