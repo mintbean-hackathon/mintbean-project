@@ -1,6 +1,7 @@
 import React from 'React'
 import {createNewDrawing} from '../store/drawings'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
 const defaultState = {
   name: '',
@@ -8,8 +9,8 @@ const defaultState = {
 }
 
 class AddDrawing extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = defaultState
 
     this.handleChange = this.handleChange.bind(this)
@@ -30,6 +31,8 @@ class AddDrawing extends React.Component {
 
   render() {
     const {name, description} = this.state
+    console.log('state in AddDrawing.js==>', this.state)
+    console.log('props in AddDrawing.js==>', this.props)
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -50,6 +53,8 @@ class AddDrawing extends React.Component {
             placeholder="Drawing Description"
             onChange={this.handleChange}
           />
+
+          {/* <canvas/> */}
 
           <button type="submit">Save Drawing</button>
         </form>

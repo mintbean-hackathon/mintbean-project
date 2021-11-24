@@ -31,7 +31,7 @@ class Routes extends Component {
               {/* Routes placed here are only available after logging in */}
               <Route path="/home" component={UserHome} />
               <Route exact path="/updateprofile" component={updateUser} />
-              <Route exact path="/adddrawing" component={AddDrawing} />
+              <Route exact path="/drawings/adddrawing" component={AddDrawing} />
               <Route
                 exact
                 path="/drawings/drawingId/edit"

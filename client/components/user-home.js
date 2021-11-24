@@ -15,6 +15,7 @@ export class UserHome extends React.Component {
 
   render() {
     const drawings = this.props.drawings
+    console.log('this.props for user-home.js==>', this.props)
     return (
       <div>
         <h1>All Drawings</h1>
