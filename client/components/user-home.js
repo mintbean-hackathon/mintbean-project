@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import {FetchDrawings, deleteDrawingThunk} from '../store/drawings'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
@@ -7,92 +7,61 @@ import {Link} from 'react-router-dom'
  * COMPONENT-This is for
  * UserHomePageDrawingLists
  */
-// export const UserHome = props => {
-//   const {email} = props
-//   console.log('this is props==>',props)
 
-//   return (
-//     <div>
-//       <h3>Welcome, {email}</h3>
-
-//     </div>
-
-//   )
-// }
-
-// /**
-//  * CONTAINER
-//  */
-// const mapState = state => {
-//   return {
-//     email: state.user.email
-//   }
-// }
-
-// export default connect(mapState)(UserHome)
-
-// /**
-//  * PROP TYPES
-//  */
-// UserHome.propTypes = {
-//   email: PropTypes.string
-// }
-
-class UserHome extends React.Component {
-  constructor(props) {
-    super(props)
+export class UserHome extends React.Component {
+  componentDidMount() {
+    this.props.FetchDrawings()
   }
 
-  // componentDidMount() {
-  //   this.props.getProducts()
-  // }
-
   render() {
-    // const products = this.props.products
-    console.log('this.props==>', this.props)
+    const drawings = this.props.drawings
+    console.log('this.props for user-home.js==>', this.props)
     return (
       <div>
         <h1>All Drawings</h1>
-        <h2>List of Drawings:</h2>
-        {/* <div >
-          {products.map(product => {
-            return (
-              <div  key={product.id}>
-                <div >
-                  <Link
+        <h2>List of Drawing:</h2>
+        {drawings.map(drawing => {
+          return (
+            <div key={drawing.id}>
+              <div>
+                <Link to={`/drawings/${drawing.id}`}>
+                  <h2>{drawing.name}</h2>
+                </Link>
+                <p>{drawing.description}</p>
 
-                    to={`/products/${product.id}`}
-                  >
-                    <h2>{product.name}</h2>
-                    <img src={product.imageUrl} />
+                <div>
+                  <Link to={`/drawings/${drawing.id}/edit`}>
+                    <button type="button">Edit Drawing</button>
                   </Link>
-                  <p>{product.description}</p>
-                  <h3>Price: {product.price}</h3>
+
+                  <button
+                    type="button"
+                    onClick={() => this.props.deleteDrawingThunk(drawing)}
+                  >
+                    Remove Drawing
+                  </button>
                 </div>
               </div>
-            )
-          })}
-        </div> */}
+            </div>
+          )
+        })}
         <div />
       </div>
     )
   }
 }
 
-// const mapState = state => {
-//   return {
-//     products: state.products
-//   }
-// }
+const mapStateToProps = state => {
+  return {
+    drawings: state.drawings
+  }
+}
 
-// const mapDispatch = dispatch => {
-//   return {
-//     getProducts: () => {
-//       return dispatch(fetchProducts())
-//     }
-//   }
-// }
+const mapDispatchToProps = dispatch => {
+  return {
+    FetchDrawings: () => dispatch(FetchDrawings()),
+    deleteDrawingThunk: drawingId => dispatch(deleteDrawingThunk(drawingId))
+  }
+}
 
-// export default connect(mapState, mapDispatch)(UserHome)
-
-export default UserHome
+export default connect(mapStateToProps, mapDispatchToProps)(UserHome)

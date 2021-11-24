@@ -5,16 +5,6 @@ const {Drawing, User} = require('../db/models')
 
 /////finding each signedIn user//////
 
-// async function checkUser(req, res, next) {
-//   // checks if someone is logged in
-//   if (req.session.passport) {
-//     // this userId is only accessible if someone is logged in
-//     const userId = req.session.passport.user
-//     const homeDog= await User.findByPk(userId);
-//     console.log('homeDog==>',homeDog);
-
-//   }
-// }
 
 /////find all drawings for signedIn User/////
 router.get('/', async (req, res, next) => {
@@ -49,9 +39,11 @@ router.get('/:drawingId', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   const userId = req.session.passport.user
 
+
   try {
     const drawing = await Drawing.create(req.body)
     console.log('drawing post4==>', drawing)
+    drawing.userId = userId
 
     res.send(drawing)
     console.log('afterdrawing post4===>', drawing)
