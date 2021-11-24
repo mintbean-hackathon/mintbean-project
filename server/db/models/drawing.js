@@ -4,6 +4,7 @@ const db = require('../db')
 const Drawing = db.define('drawing', {
   name: {
     type: Sequelize.STRING,
+    defaultValue: 'Add name',
     allowNull: false,
     validate: {
       notEmpty: true
@@ -11,6 +12,7 @@ const Drawing = db.define('drawing', {
   },
   description: {
     type: Sequelize.STRING,
+    defaultValue: 'Add Description',
     allowNull: false,
     validate: {
       notEmpty: true
