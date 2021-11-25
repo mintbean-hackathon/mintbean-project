@@ -1,7 +1,6 @@
 import React from 'React'
-import {createNewDrawing} from '../store/drawings'
+import {createNewDrawing, fetchDrawings} from '../store/drawings'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
 
 const defaultState = {
   name: '',
