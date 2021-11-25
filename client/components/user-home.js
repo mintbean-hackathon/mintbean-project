@@ -24,9 +24,8 @@ export class UserHome extends React.Component {
           return (
             <div key={drawing.id}>
               <div>
-                <Link to={`/drawings/${drawing.id}`}>
-                  <h2>{drawing.name}</h2>
-                </Link>
+                <h2>{drawing.name}</h2>
+
                 <p>{drawing.description}</p>
 
                 <div>

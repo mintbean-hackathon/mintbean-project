@@ -9,8 +9,8 @@ const defaultState = {
 }
 
 class EditDrawing extends React.Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.state = defaultState
 
     this.handleChange = this.handleChange.bind(this)
