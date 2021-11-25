@@ -1,7 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {Typography, TextField, Box, Button} from '@mui/material'
 import PropTypes from 'prop-types'
 import {auth} from '../store'
+import useStyles from './auth-form-styles'
 
 /**
  * COMPONENT
@@ -9,29 +11,50 @@ import {auth} from '../store'
 
 const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
+  const classes = useStyles()
 
   if (displayName === 'Login') {
     return (
-      <div>
-        <form onSubmit={handleSubmit} name={name}>
-          <div>
-            <label htmlFor="email">
-              <small>Email</small>
-            </label>
-            <input name="email" type="text" />
-          </div>
-          <div>
-            <label htmlFor="password">
-              <small>Password</small>
-            </label>
-            <input name="password" type="password" />
-          </div>
-          <div>
-            <button type="submit">{displayName}</button>
-          </div>
-          {error && error.response && <div> {error.response.data} </div>}
-        </form>
-        <a href="/auth/google">{displayName} with Google</a>
+      <div className={classes.root}>
+        <Box className={classes.box}>
+          <form onSubmit={handleSubmit} name={name}>
+            <Typography variant="h6" color="white" htmlFor="email">
+              Email
+            </Typography>
+            <TextField
+              variant="outlined"
+              required
+              size="small"
+              className={classes.textfield}
+              name="email"
+              type="text"
+            />
+
+            <Typography variant="h6" color="white" htmlFor="password">
+              Password
+            </Typography>
+            <TextField
+              variant="outlined"
+              required
+              size="small"
+              className={classes.textfield}
+              name="password"
+              type="password"
+            />
+
+            <div>
+              <Button
+                variant="contained"
+                color="secondary"
+                className={classes.profile}
+                type="submit"
+              >
+                {displayName}
+              </Button>
+            </div>
+            {error && error.response && <div> {error.response.data} </div>}
+          </form>
+        </Box>
       </div>
     )
   }
