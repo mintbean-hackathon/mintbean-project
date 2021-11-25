@@ -9,8 +9,10 @@ const Drawing = require('./drawing')
  *    BlogPost.belongsTo(User)
  */
 
-Drawing.belongsTo(User)
+///1-many relationship
 User.hasMany(Drawing)
+///Foreign Key of User goe on drawing table
+Drawing.belongsTo(User)
 
 /**
  * We'll export all of our models here, so that any time a module needs a model,
