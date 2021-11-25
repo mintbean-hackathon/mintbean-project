@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const SET_DRAWINGS = 'SET_DRAWINGS'
-const CREATE_DRAWING = 'CCREATE_DRAWING'
+const CREATE_DRAWING = 'CREATE_DRAWING'
 const DELETE_DRAWING = 'DELETE_DRAWING'
 const UPDATE_DRAWING = 'UPDATE_DRAWING'
 
@@ -79,7 +79,8 @@ export const updateDrawing = drawing => {
 export const updateDrawingThunk = drawing => {
   return async dispatch => {
     try {
-      const response = await axios.put(`/api/drawing/${drawing.id}`, drawing)
+      const response = await axios.put(`/api/drawings/${drawing.id}`, drawing)
+      console.log('this is Response==>', response)
       const updatedDrawing = response.data
 
       dispatch(updateDrawing(updatedDrawing))

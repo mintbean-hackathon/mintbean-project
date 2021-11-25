@@ -5,15 +5,12 @@ const {Drawing, User} = require('../db/models')
 
 /////finding each signedIn user//////
 
-
-/////find all drawings for signedIn User/////
+/////find all drawings for signedIn User////////
 router.get('/', async (req, res, next) => {
   try {
     const userId = req.session.passport.user
     const allDrawings = await Drawing.findAll({where: {userId: userId}})
-    console.log('userId in Drawing.js==>', userId)
     res.json(allDrawings)
-    console.log('allDrawings api/drawings.js===>', allDrawings)
   } catch (err) {
     next(err)
   }
@@ -21,11 +18,11 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:drawingId', async (req, res, next) => {
   try {
+    //////use getDrawings magicMethod
     const drawing = await Drawing.findByPk(req.params.drawingId)
 
     if (drawing) {
       res.json(drawing)
-      console.log('getIndividiaulDrawing,drawing')
     } else {
       res.status(404).send('drawing not found')
     }
@@ -36,17 +33,14 @@ router.get('/:drawingId', async (req, res, next) => {
 
 // /api/drawings
 //////create drawing for signedIn user
+/////Magic Method used Here?
 router.post('/', async (req, res, next) => {
-  const userId = req.session.passport.user
-
-
+  // const userId = req.session.passport.user
   try {
+    let currentUser = await User.findByPk(req.session.passport.user)
     const drawing = await Drawing.create(req.body)
-    console.log('drawing post4==>', drawing)
-    drawing.userId = userId
-
+    await drawing.assignUser(currentUser)
     res.send(drawing)
-    console.log('afterdrawing post4===>', drawing)
   } catch (error) {
     next(error)
   }
@@ -54,13 +48,14 @@ router.post('/', async (req, res, next) => {
 
 // /api/drawings/:id
 //////update drawing for signedIn user
-
 router.put('/:id', async (req, res, next) => {
   try {
     const drawingId = req.params.id
     const drawing = await Drawing.findByPk(drawingId)
-    console.log('drawingPut===>', drawing)
-    res.send(await drawing.update(req.body))
+
+    const editThisDrawing = await drawing.update(req.body)
+    console.log('editThisDrawing==>', editThisDrawing)
+    res.send(editThisDrawing)
   } catch (error) {
     next(error)
   }

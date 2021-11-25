@@ -32,11 +32,7 @@ class Routes extends Component {
               <Route path="/home" component={UserHome} />
               <Route exact path="/updateprofile" component={updateUser} />
               <Route exact path="/drawings/adddrawing" component={AddDrawing} />
-              <Route
-                exact
-                path="/drawings/drawingId/edit"
-                component={EditDrawing}
-              />
+              <Route path="/drawings/:drawingId/edit" component={EditDrawing} />
             </Switch>
           )}
           {/* Displays our Login component as a fallback */}

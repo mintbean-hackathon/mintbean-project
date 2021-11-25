@@ -21,3 +21,8 @@ const Drawing = db.define('drawing', {
 })
 
 module.exports = Drawing
+
+///instance method/////
+Drawing.prototype.assignUser = function(user) {
+  return this.setUser(user)
+}
