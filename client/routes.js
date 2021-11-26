@@ -8,6 +8,7 @@ import FundrawityHomepage from './components/FundrawityHomepage'
 import updateUser from './components/updateUser'
 import AddDrawing from './components/AddDrawing'
 import EditDrawing from './components/EditDrawing'
+import DrawingTool from './components/DrawingTool'
 
 /**
  * COMPONENT
@@ -33,10 +34,11 @@ class Routes extends Component {
               <Route exact path="/updateprofile" component={updateUser} />
               <Route exact path="/drawings/adddrawing" component={AddDrawing} />
               <Route path="/drawings/:drawingId/edit" component={EditDrawing} />
+              {/* <Route path='/drawings/addDrawing' component={DrawingTool}/> */}
             </Switch>
           )}
           {/* Displays our Login component as a fallback */}
-          <Route component={Login} />
+          <Route exact path="/login" component={Login} />
         </Switch>
         <Route exact path="/" component={FundrawityHomepage} />
       </div>

@@ -1,7 +1,8 @@
 import React from 'React'
 import {createNewDrawing} from '../store/drawings'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
+import {Route, Link} from 'react-router-dom'
+import DrawingTool from './DrawingTool'
 
 const defaultState = {
   name: '',
@@ -54,7 +55,7 @@ class AddDrawing extends React.Component {
             onChange={this.handleChange}
           />
 
-          {/* <canvas/> */}
+          <Route path="/drawings/adddrawing" component={DrawingTool} />
 
           <button type="submit">Save Drawing</button>
         </form>
