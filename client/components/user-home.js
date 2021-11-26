@@ -1,8 +1,8 @@
 import React from 'react'
 import {FetchDrawings, deleteDrawingThunk} from '../store/drawings'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
-
+import {Route, Link} from 'react-router-dom'
+import AddDrawing from './AddDrawing'
 /**
  * COMPONENT-This is for
  * UserHomePageDrawingLists
@@ -18,33 +18,39 @@ export class UserHome extends React.Component {
     console.log('this.props for user-home.js==>', this.props)
     return (
       <div>
-        <h1>All Drawings</h1>
-        <h2>List of Drawing:</h2>
-        {drawings.map(drawing => {
-          return (
-            <div key={drawing.id}>
-              <div>
-                <h2>{drawing.name}</h2>
-
-                <p>{drawing.description}</p>
-
+        <div>
+          <h1>All Drawings</h1>
+          <h2>List of Drawing:</h2>
+          {drawings.map(drawing => {
+            return (
+              <div key={drawing.id}>
                 <div>
-                  <Link to={`/drawings/${drawing.id}/edit`}>
-                    <button type="button">Edit Drawing</button>
-                  </Link>
+                  <h2>{drawing.name}</h2>
 
-                  <button
-                    type="button"
-                    onClick={() => this.props.deleteDrawingThunk(drawing)}
-                  >
-                    Remove Drawing
-                  </button>
+                  <p>{drawing.description}</p>
+
+                  <div>
+                    <Link to={`/drawings/${drawing.id}/edit`}>
+                      <button type="button">Edit Drawing</button>
+                    </Link>
+
+                    <button
+                      type="button"
+                      onClick={() => this.props.deleteDrawingThunk(drawing)}
+                    >
+                      Remove Drawing
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          )
-        })}
-        <div />
+            )
+          })}
+          <div />
+        </div>
+
+        <div>
+          <Route component={AddDrawing} />
+        </div>
       </div>
     )
   }

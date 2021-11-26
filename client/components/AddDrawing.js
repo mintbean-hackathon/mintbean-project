@@ -13,7 +13,7 @@ class AddDrawing extends React.Component {
   constructor(props) {
     super(props)
     this.state = defaultState
-
+    ////handling name and description
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -36,29 +36,34 @@ class AddDrawing extends React.Component {
     console.log('props in AddDrawing.js==>', this.props)
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="name">Drawing Name</label>
-          <input
-            type="text"
-            name="name"
-            value={name}
-            placeholder="Drawing Name"
-            onChange={this.handleChange}
-          />
+        <div>
+          <h1> Add Drawing</h1>
+        </div>
+        <div>
+          <form onSubmit={this.handleSubmit}>
+            <label htmlFor="name">Drawing Name</label>
+            <input
+              type="text"
+              name="name"
+              value={name}
+              placeholder="Drawing Name"
+              onChange={this.handleChange}
+            />
 
-          <label htmlFor="description">Drawing Description</label>
-          <input
-            type="text"
-            name="description"
-            value={description}
-            placeholder="Drawing Description"
-            onChange={this.handleChange}
-          />
-
-          <Route path="/drawings/adddrawing" component={DrawingTool} />
-
-          <button type="submit">Save Drawing</button>
-        </form>
+            <label htmlFor="description">Drawing Description</label>
+            <input
+              type="text"
+              name="description"
+              value={description}
+              placeholder="Drawing Description"
+              onChange={this.handleChange}
+            />
+            <button type="submit">Save Drawing</button>
+          </form>
+        </div>
+        <div>
+          <Route component={DrawingTool} onChange={this.handleChange} />
+        </div>
       </div>
     )
   }

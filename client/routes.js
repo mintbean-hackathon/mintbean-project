@@ -32,9 +32,7 @@ class Routes extends Component {
               {/* Routes placed here are only available after logging in */}
               <Route path="/home" component={UserHome} />
               <Route exact path="/updateprofile" component={updateUser} />
-              <Route exact path="/drawings/adddrawing" component={AddDrawing} />
               <Route path="/drawings/:drawingId/edit" component={EditDrawing} />
-              {/* <Route path='/drawings/addDrawing' component={DrawingTool}/> */}
             </Switch>
           )}
           {/* Displays our Login component as a fallback */}

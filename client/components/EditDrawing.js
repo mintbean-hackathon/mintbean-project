@@ -2,6 +2,8 @@ import React from 'react'
 import {updateDrawingThunk} from '../store/drawings'
 import {connect} from 'react-redux'
 import {fetchSingleDrawing} from '../store/singleDrawing'
+import DrawingTool from './DrawingTool'
+import {Route} from 'react-router-dom'
 
 const defaultState = {
   name: '',
@@ -58,29 +60,38 @@ class EditDrawing extends React.Component {
     console.log('props of EditDrawing===>', this.props)
     return (
       <div className="form">
-        <form id="add-drawing-form" onSubmit={this.handleSubmit}>
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            name="name"
-            value={name}
-            placeholder="name of drawing"
+        <div>
+          <form id="add-drawing-form" onSubmit={this.handleSubmit}>
+            <label htmlFor="name">Name:</label>
+            <input
+              type="text"
+              name="name"
+              value={name}
+              placeholder="name of drawing"
+              onChange={this.handleChange}
+            />
+
+            <label htmlFor="description">Description:</label>
+            <input
+              type="text"
+              name="description"
+              value={description}
+              placeholder="drawing description"
+              onChange={this.handleChange}
+            />
+
+            <button type="submit" className="submit-button">
+              Save Drawing
+            </button>
+          </form>
+        </div>
+        <div>
+          <Route
+            path="/drawings/:drawingId/edit"
+            component={DrawingTool}
             onChange={this.handleChange}
           />
-
-          <label htmlFor="description">Description:</label>
-          <input
-            type="text"
-            name="description"
-            value={description}
-            placeholder="drawing description"
-            onChange={this.handleChange}
-          />
-
-          <button type="submit" className="submit-button">
-            Save Drawing
-          </button>
-        </form>
+        </div>
       </div>
     )
   }

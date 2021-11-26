@@ -1,7 +1,6 @@
 import React, {useState, useRef, useEffect, useCallback} from 'react'
 import {SketchPicker} from 'react-color'
 import {Button} from '@mui/material'
-
 import useStyles from './DrawingToolStyle'
 
 const DrawingTool = () => {
